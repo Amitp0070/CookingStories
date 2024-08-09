@@ -1,0 +1,86 @@
+{% extends 'layout/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 mx-auto my-5">
+            <div class="card">
+                <div class="card-body">
+                    <h1 class="display-5">Create your article</h1>
+                    
+                    <!-- Display success or error messages -->
+                    
+                    <form method="post" enctype="multipart/form-data" autocomplete="false">
+                        {% csrf_token %}
+                        {% include 'components/message.html' %}
+                        {{ form.media }}
+                        
+                        <!-- Title Field -->
+                        <div class="mb-3">
+                            <label for="title" class="form-label">Title</label>
+                            <input type="text" class="form-control form-control-lg" name="title" id="title"
+                                aria-describedby="helpId" placeholder="Your article" 
+                                {% if article %}
+                                value="{{ article.title }}"
+                                {% endif %} />
+                            <small id="helpId" class="form-text text-muted"></small>
+                        </div>
+                        
+                        <!-- Content Field with CKEditor -->
+                        <div class="mb-3">
+                            <label for="content" class="form-label">Content</label>
+                            <textarea class="form-control form-control-lg" name="content" id="content" rows="20"
+                                aria-describedby="contentHelp">{% if article %}{{ article.content }}{% endif %}</textarea>
+                            <small id="contentHelp" class="form-text text-muted"></small>
+                        </div>
+                        
+                        <!-- Image Field -->
+                        <div class="mb-3">
+                            <label for="image" class="form-label">Choose Article Image</label>
+                            <input type="file" class="form-control form-control-lg" name="image" id="image"
+                                aria-describedby="imageHelpId" />
+                            <div id="imageHelpId" class="form-text">
+                                {% if article %}
+                                    current image: <a href="{{ article.image.url }}">{{ article.image }}</a>
+                                {% endif %}
+                            </div>
+                        </div>
+                        
+                        <!-- Topic Field (City) -->
+                        <div class="mb-3">
+                            <label for="topic" class="form-label">City</label>
+                            <select class="form-select form-select-lg" name="topic" id="topic">
+                                {% for topic in topics %}
+                                <option value="{{ topic.id }}"
+                                {% if article and article.topic.name == topic.name %}
+                                    selected
+                                {% endif %}>
+                                {{ topic.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        
+                        <!-- Submit Button -->
+                        <div class="mb-3">
+                            <div class="d-grid gap-2">
+                                <button type="submit" class="btn btn-primary">
+                                    Done
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Initialize CKEditor -->
+<script src="{% static 'ckeditor/ckeditor.js' %}"></script>
+<script>
+    CKEDITOR.replace('content', {
+        filebrowserUploadUrl: "{% url 'ckeditor_upload' %}", // CKEditor upload URL
+    });
+</script>
+{% endblock %}

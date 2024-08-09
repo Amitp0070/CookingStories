@@ -1,0 +1,54 @@
+<header class="p-3 container" style="background-color: rgb(250, 247, 247);">
+    <div class="container-fluid">
+        
+        <div class="container d-flex justify-content-around align-items-center justify-content-center ">
+            <ul class="nav col-12 col-lg-auto me-lg-5 mb-2 mb-md-0">
+                <li><a href="{% url 'home' %}" class="nav fw-bold  fs-4 text-dark" style="text-decoration: none;">
+                        HOME<i class="bi bi-house px-2"></i>
+                    </a></li>
+    
+            </ul>
+            <a href="{% url 'home' %}" class="d-flex align-items-center  mb-2 mb-lg-0  mx-md-auto fs-2 fw-bold text-dark" style="font-family: sans-serif; letter-spacing: 2px; text-decoration: none;">
+                COOKINGSTORIES
+            </a>
+
+
+            <!-- <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+                <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Search..."
+                aria-label="Search">
+            </form> -->
+
+            <div class="text-end">
+                {% if user.is_authenticated %}
+
+
+
+
+                <div class="dropdown open">
+                    <a class="btn btn-success px-4 fs-5 align-items-center dropdown-toggle " type="button" id="triggerId" data-bs-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        {{user.username|title}}
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="triggerId">
+
+                        {% if user.is_superuser %}
+                        <a class="dropdown-item" href="{% url 'admin:index' %}">Dashboard</a>
+
+                        {% endif %}
+
+                        <a class="dropdown-item" href="{% url 'my_articles' %}">My article</a>
+                        <a class="dropdown-item" href="{% url 'add' %}"> Create</a>                     
+                        <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+
+                    </div>
+                </div>
+
+                {% else %}
+                <a href="{% url 'login' %}" class="btn btn-outline-dark fs-5 px-3 fw-bold">Login</a>
+                <a href="{% url 'register' %}" class="btn btn-warning fs-5 px-3 fw-bold">register</a>
+                {% endif %}
+            </div>
+
+        </div>
+    </div>
+</header>

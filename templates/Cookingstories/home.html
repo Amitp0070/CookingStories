@@ -1,0 +1,98 @@
+{% extends 'layout/base.html' %}
+{% load static %}
+
+{% block css %}
+<style>
+    .lead {
+        font-family: 'Domaine Text', Palatino, Palatino Linotype, Palatino LT STD, Book Antiqua, Georgia, serif;
+        font-size: 2rem;
+    }
+
+    .hero-img {
+        width: 500px;
+        height: 400px;
+    }
+
+    li {
+        padding-bottom: 20px;
+    }
+
+    li img {
+        width: 100px;
+        height: 100px;
+    }
+</style>
+{% endblock css %}
+
+{% block content %}
+{% include 'components/message.html' %}
+<section class="py-5  container" style="background-color: #b9d1b2;">
+    <div class="row py-lg-5">
+        <div class="col col-md-8 mx-auto ">
+            <p class="lead">Something short and leading about the collection below—its contents, the
+                creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it entirely.
+            </p>
+            <p>
+                <a href="{% url 'login' %}" class="btn btn-dark  my-2 fs-5 fw-bold">GET STARTED</a>
+            </p>
+        </div>
+    </div>
+</section>
+
+
+<!-- <section class=" container">
+    <div class="row m-3">
+        <div class="col-lg-8 d-flex justify-content-center col-md-12">
+            <img src="/media/articles/images/food.jpg" class="hero-img" alt="">
+        </div>
+        <div class="col-lg-4 col-md-12"> 
+            <ul>
+                <li class="d-flex "><img src="/media/articles/images/stannlee.jpg" alt=""> I Make Jar After Jar of This Homemade Creamy Ranch Dressing</li>
+                <li class="d-flex "><img src="/media/articles/images/APJ.jpg" alt="">I Make Jar After Jar of This Homemade Creamy Ranch Dressing</li>
+                <li class="d-flex "><img src="/media/articles/images/amit.jpg" alt="">I Make Jar After Jar of This Homemade Creamy Ranch Dressing</li>
+            </ul>
+        </div>
+    </div>
+</section> -->
+<section>
+    <div class="container" id="article_card">
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-12">
+
+                {% for item in articles %}
+                {% include 'components/article_card.html' %}
+                {% empty %}
+                <div class="alert alert-info" role="alert">
+                    <h4 class="alert-heading">No articles available now</h4>
+                    <p>You can create an account and write new articles for us</p>
+                    <hr>
+                    <p class="mb-0">Are you are building writes?
+                        <a href="{% url 'register' %}">Register</a>
+                        to write articles for us
+                    </p>
+                </div>
+                {% endfor %}
+                <nav aria-label="article navigation">
+                    <ul class="pagination justify-content-center">
+                        {% if articles.has_previous %}
+                        <li class="page-item">
+                            <a class="page-link" href="?p={{ articles.previous_page_number }}">previous</a>
+                        </li>
+                        {% endif %}
+                        <li class="page-item">
+                            <a class="page-link active">
+                                {{ articles.number }} of {{ articles.paginator.num_pages }}
+                            </a>
+                        </li>
+                        {% if articles.has_next %}
+                        <li class="page-item">
+                            <a class="page-link" href="?p={{ articles.next_page_number }}">next</a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -13,6 +13,7 @@ def home_view(request):
     # get all articles
     article_list = Article.objects.all()
     topic_list = Topic.objects.all()
+    latest_article = Article.objects.order_by('-created_at').first()
     # pagination
     paginator = Paginator(article_list, 8)
     page = request.GET.get('p',1)
@@ -21,6 +22,7 @@ def home_view(request):
     ctx = {
         'articles': articles,
         'topics': topic_list,
+        'latest_article': latest_article,
     }
     return render(request, 'Cookingstories/home.html', ctx)
 
@@ -35,7 +37,7 @@ def add_view(request):
         topic = Topic.objects.get(id=topic_id) # get topic object from id
         image = request.FILES.get('image')
         author = request.user
-        if len(title) < 3:
+        if len(title) < 10:
             messages.error(request, 'Title must be at least 3 characters.')
             return redirect('add') 
         if len(content) < 50:
@@ -187,4 +189,9 @@ def logout_view(request):
 # def latest_article_view(request):
 #     latest_article = Article.objects.order_by('-created_at')[:5]  # Adjust the number to show more or fewer recipes
 #     return render(request, 'CookingStories/detail.html', {'latest_article': latest_article})
+
+
+
+
+
 

@@ -13,18 +13,18 @@
 {% endblock css %}
 
 {% block content %}
-<div class="container-fluid px-0">
+<div class="container-fluid py-4">
     <img src="{{article.image.url}}" alt="{{article.title}}" class="article-img">
 </div>
 <div class="container ">
     <div class="row">
         <div class="col-lg-8 mx-auto">
-            <div class="display-2">
+            <div class="display-6">
                 <strong>
                     {{article.title|title}}
                 </strong>
             </div>
-            <div class="info d-flex justify-content-between">
+            <div class="info d-flex justify-content-between pt-5">
                 <span>
                     <i class="bi bi-person"></i>
                     {{article.author}}

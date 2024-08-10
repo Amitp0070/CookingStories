@@ -3,9 +3,13 @@
 
 {% block css %}
 <style>
+    section {
+        display: flex;
+    }
     .lead {
         font-family: 'Domaine Text', Palatino, Palatino Linotype, Palatino LT STD, Book Antiqua, Georgia, serif;
-        font-size: 2rem;
+        font-size: 1.5rem;
+        
     }
 
     .hero-img {
@@ -21,14 +25,41 @@
         width: 100px;
         height: 100px;
     }
+
+    .hero-section{
+        align-items: center;
+        justify-items: center;
+    }
+
+    .home-heading {
+        font-family: Bitter, Georgia, Cambria, Times New Roman, Times, serif;
+        font-weight: bolder;
+        letter-spacing: 2px;
+        
+    }
+    .home-second-heading{
+        font-weight: 400;
+        font-family: "Yellowtail", cursive;;
+        font-size: 1.5rem;
+        font-style: normal;
+        color: rgba(114, 63, 95, 0.9);
+    }
 </style>
 {% endblock css %}
 
 {% block content %}
 {% include 'components/message.html' %}
-<section class="py-5  container" style="background-color: #b9d1b2;">
-    <div class="row py-lg-5">
-        <div class="col col-md-8 mx-auto ">
+<section class=" row d-grid justify-content-center p-2">
+    <div class="col-md-12 d-flex justify-content-center text-center mb-2 md-mb-3">
+        <h5 class="col-md-12 text-black">
+            <span class="home-heading">Simple recipes made for</span> <span class="home-second-heading">real, actual,
+                everyday life.</span>
+        </h5>
+    </div>
+</section>
+<section class="hero-section py-5 container justify-content-center align-items-center text-center" style="background-color: #b9d1b2; width: 900px;">
+    <div class="row py-lg-2  ">
+        <div class="col-md-8 mx-auto ">
             <p class="lead">Something short and leading about the collection below—its contents, the
                 creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it entirely.
             </p>
@@ -54,6 +85,7 @@
         </div>
     </div>
 </section> -->
+
 <section>
     <div class="container" id="article_card">
         <div class="row d-flex justify-content-center">
@@ -94,5 +126,24 @@
             </div>
         </div>
     </div>
+    <div class="col-md-4">
+        <h2 class="text-center">Latest Blog Article</h2>
+        <div class="card  mx-auto d-flex" style="width: 16rem; height: 100vh;">
+
+            <img src="{{ latest_article.image.url }}" class="card-img-top " style="height: 200px; object-fit: cover;"
+                alt="{{ latest_article.title }}">
+            <div class="card-body">
+                {% if latest_article %}
+                <h3>{{ latest_article.title|truncatewords:3 }}</h3>
+                <p>{{ latest_article.content|truncatewords:10 | safe }}</p>
+                <p><small>Published on: {{ latest_article.created_at }}</small></p>
+                <a href="{% url 'detail' latest_article.id %}">Read more</a>
+                {% else %}
+                <p>No blog articles available.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
 </section>
+
 {% endblock %}

@@ -1,58 +1,65 @@
 {% extends 'layout/base.html' %}
-
-
 {% block css %}
 <style>
     body {
-        background-color: white;
+        background-color: #eff0ed;
     }
-    .card {
-        width: 350px;
-        height: 400px;
-        border-radius: 15px;
-    }
-    label {
-        display: block;
-        font-size: 20px;
-    }
-    input {
-        width: 100%;
-        height: 40px;
-    }
+
+   .container{
+    padding-top: 10px;
+   }
 </style>
 {% endblock css %}
-
+    
 
 {% block content %}
-<div class="container d-flex justify-content-center p-3">
-    <div class="card row">
-        
-            <form method="post">
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-lg-4 mx-auto">
+            <form method="post" class="card shadow-lg">
                 {% csrf_token %}
-                <h2>Registrater</h2>
                 {% include 'components/message.html' %}
-                <div class="mb-1">
-                    <label for="username" class="form-label">Username</label>
-                    <input type="text" class="form-control" name="username" id="username" aria-describedby="helpId"
-                        placeholder="Username">
+                <div class="card-header text-center bg-dark text-light py-3">
+                    <h3>Create New Account</h3>
                 </div>
-                <div class="mb-1">
-                    <label for="email" class="form-label">Email</label>
-                    <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelpId"
-                        placeholder="abc@mail.com">
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Username</label>
+                        <input type="text" class="form-control " name="username" id="username"
+                            aria-describedby="userHelp" placeholder="Username" />
+                        <small id="userHelp" class="form-text text-muted"></small>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control " name="email" id="email"
+                            aria-describedby="emailHelpId" placeholder="abc@mail.com" />
+                        <small id="emailHelpId" class="form-text text-muted"></small>
+                    </div>
 
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control " name="pass" id="pass"
+                            aria-describedby="passHelp" placeholder="password" />
+                        <small id="passHelp" class="form-text text-muted"></small>
+                    </div>
+                    <div class="mb-3">
+                        <label for="cpassword" class="form-label">Confrim Password</label>
+                        <input type="password" class="form-control " name="cpass" id="cpass"
+                            aria-describedby="cpassHelp" placeholder="password" />
+                        <small id="cpassHelp" class="form-text text-muted"></small>
+                    </div>
+                    <div class="d-grid ">
+                        <button class="btn btn-primary btn-lg">
+                            Create account
+                        </button>
+                        <div class="p-3 d-flex fw-bold fs-5 mx-auto">
+                            Already have account? <a href="{% url 'login' %}" class="nav-link text-primary px-2">Login</a>
+                        </div>
+                    </div>
                 </div>
-                <div class="mb-1">
-                    <label for="pass" class="form-label">Password</label>
-                    <input type="password" class="form-control" name="pass" id="pass" placeholder="enter password">
-                </div>
-                <div class="mb-1">
-                    <label for="cpass" class="form-label">Confirm Password</label>
-                    <input type="password" class="form-control" name="cpass" id="cpass" placeholder="confirm password">
-                </div>
-                <button class="btn btn-success">Register</button>
             </form>
-        
+        </div>
     </div>
 </div>
 {% endblock content %}
+    

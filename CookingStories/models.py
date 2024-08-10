@@ -2,6 +2,7 @@ from django.db import models
 from ckeditor.fields import RichTextField
 
 
+
 class Topic(models.Model):
     name = models.CharField(max_length=50)
 
@@ -18,6 +19,6 @@ class Article(models.Model):
     likes = models.PositiveIntegerField("Total likes", default=0)
     def __str__(self):
         return self.title
-
+    
 
 

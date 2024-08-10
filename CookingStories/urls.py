@@ -16,6 +16,8 @@ urlpatterns = [
     path('article/<int:id>/edit', views.edit_view, name='edit'),
     path('article/<int:id>/delete', views.delete_view, name='delete'),
     path('article/<int:id>/detail', views.detail_view, name='detail'),
+   
+    
 ]
 
 

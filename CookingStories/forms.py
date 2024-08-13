@@ -35,3 +35,5 @@ class ArticleForm(forms.ModelForm):
     class Meta:
         model = Article  # Assuming the model name is Article
         fields = ['title', 'content', 'image', 'publication_date', 'city']
+
+

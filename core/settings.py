@@ -199,3 +199,12 @@ SOCIALACCOUNT_PROVIDERS = {
     #         'auth_type': 'online',
     #     },
     # }
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'amitpathak00700@gmail.com'  # Your email host provider
+EMAIL_PORT = 587  # Or 465 for SSL
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'amitpathak00700@gmail.com'
+EMAIL_HOST_PASSWORD = 'Amit2003@@'
+DEFAULT_FROM_EMAIL = 'amitpathak00700@gmail.com'

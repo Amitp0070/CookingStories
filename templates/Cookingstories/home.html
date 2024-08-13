@@ -3,94 +3,278 @@
 
 {% block css %}
 <style>
-    section {
-        display: flex;
+    * {
+        margin: 0;
+        padding: 0;
     }
+    section{
+        overflow: hidden;
+    }
+
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: rgb(251, 251, 251);
+    }
+
     .lead {
         font-family: 'Domaine Text', Palatino, Palatino Linotype, Palatino LT STD, Book Antiqua, Georgia, serif;
-        font-size: 1.5rem;
-        
+        font-size: 1.25rem;
     }
 
-    .hero-img {
-        width: 500px;
-        height: 400px;
+    .hero-section {
+        background-color: #4a4a4a;
+        color: white;
+        padding: 50px 0;
     }
 
-    li {
-        padding-bottom: 20px;
-    }
-
-    li img {
-        width: 100px;
-        height: 100px;
-    }
-
-    .hero-section{
-        align-items: center;
-        justify-items: center;
+    .hero-content {
+        background-color: rgb(255, 255, 255);
+        padding: 2rem;
+        border-radius: 15px;
     }
 
     .home-heading {
         font-family: Bitter, Georgia, Cambria, Times New Roman, Times, serif;
         font-weight: bolder;
         letter-spacing: 2px;
-        
+        font-size: 1.3rem;
     }
-    .home-second-heading{
-        font-weight: 400;
-        font-family: "Yellowtail", cursive;;
-        font-size: 1.5rem;
-        font-style: normal;
+
+    .home-second-heading {
+        font-family: "Yellowtail", cursive;
+        font-size: 1.75rem;
+        font-style: italic;
         color: rgba(114, 63, 95, 0.9);
+    }
+
+    .btn-animated {
+        transition: all 0.3s ease;
+    }
+
+    .btn-animated:hover {
+        transform: scale(1.05);
+    }
+
+
+
+    .category-image {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        width: 107px;
+        height: 107px;
+        object-fit: cover;
+    }
+
+    .category-image:hover {
+        transform: scale(1.1);
+        opacity: 0.8;
+        box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .category-name {
+        font-weight: bold;
+        font-family: Arial, sans-serif;
+    }
+
+    .img-fluid {
+        max-width: 100%;
+        height: auto;
+        transition: transform 0.3s ease;
+    }
+
+    .image-effect:hover {
+        transform: scale(1.05);
+    }
+
+    a:hover img {
+        opacity: 0.8;
+    }
+
+    .text-uppercase {
+        text-transform: uppercase;
+    }
+
+    .font-weight-bold {
+        font-weight: bold;
+    }
+
+    .title {
+        bottom: -8%;
+        width: 55%;
+        background-color: rgb(225, 143, 37);
+    }
+
+    @media (max-width: 768px) {
+        .title {
+            bottom: -5%;
+            width: 70%;
+            font-size: 0.9rem;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .title {
+            bottom: -3%;
+            width: 85%;
+            font-size: 0.8rem;
+        }
+    }
+
+    .e-topic {
+        font-family: Bitter, Georgia, Cambria, Times New Roman, Times, serif;
+    }
+
+    .cookbook-image {
+        max-width: 100%;
+        height: auto;
+        border-radius: 10px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .cookbook-image:hover {
+        transform: scale(1.05);
+        opacity: 0.8;
+        box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .get-it-now {
+        font-size: 2rem;
+        color: #ffd700;
+        font-style: italic;
+        margin-bottom: 10px;
+    }
+
+    .heart-icon {
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+        font-size: 24px;
+        color: white;
+    }
+
+    .latest-article-card {
+        transition: all 0.3s ease;
+        margin-bottom: 1.5rem;
+        border: none;
+        max-height: 400px;
+    }
+
+    .latest-article-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .img-fluid {
+        background-position: center;
+        object-fit: cover;
+    }
+
+    .view-btn button {
+        background-color: rgba(141, 72, 116, 0.9);
+        color: white;
+        width: 250px;
+    }
+
+    .view-btn button:hover{
+        background-color: black;
+        color: white;
+    }
+    .card-title {
+        font-weight: bold;
+    }
+
+    .list-group-item {
+        border: none;
+        padding: 0.5rem 0;
+    }
+
+    .badge {
+        font-weight: normal;
     }
 </style>
 {% endblock css %}
 
 {% block content %}
 {% include 'components/message.html' %}
-<section class=" row d-grid justify-content-center p-2">
-    <div class="col-md-12 d-flex justify-content-center text-center mb-2 md-mb-3">
-        <h5 class="col-md-12 text-black">
-            <span class="home-heading">Simple recipes made for</span> <span class="home-second-heading">real, actual,
-                everyday life.</span>
-        </h5>
-    </div>
-</section>
-<section class="hero-section py-5 container justify-content-center align-items-center text-center" style="background-color: #b9d1b2; width: 900px;">
-    <div class="row py-lg-2  ">
-        <div class="col-md-8 mx-auto ">
-            <p class="lead">Something short and leading about the collection below—its contents, the
-                creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it entirely.
-            </p>
-            <p>
-                <a href="{% url 'login' %}" class="btn btn-dark  my-2 fs-5 fw-bold">GET STARTED</a>
-            </p>
-        </div>
-    </div>
-</section>
 
-
-<!-- <section class=" container">
-    <div class="row m-3">
-        <div class="col-lg-8 d-flex justify-content-center col-md-12">
-            <img src="/media/articles/images/food.jpg" class="hero-img" alt="">
-        </div>
-        <div class="col-lg-4 col-md-12"> 
-            <ul>
-                <li class="d-flex "><img src="/media/articles/images/stannlee.jpg" alt=""> I Make Jar After Jar of This Homemade Creamy Ranch Dressing</li>
-                <li class="d-flex "><img src="/media/articles/images/APJ.jpg" alt="">I Make Jar After Jar of This Homemade Creamy Ranch Dressing</li>
-                <li class="d-flex "><img src="/media/articles/images/amit.jpg" alt="">I Make Jar After Jar of This Homemade Creamy Ranch Dressing</li>
-            </ul>
-        </div>
-    </div>
-</section> -->
+<header class="container-fluid py-4 text-center">
+    <h1 class="home-heading d-block mb-3">
+        Simple recipes made for
+        <span class="home-second-heading">real, actual, everyday life.</span>
+    </h1>
+</header>
 
 <section>
-    <div class="container" id="article_card">
-        <div class="row d-flex justify-content-center">
-            <div class="col-md-12">
+    <div class="row">
+        <div class="col-6 col-md-3 mb-4">
+            <a class="d-block position-relative text-decoration-none" href="#">
+                <div class="text-center">
+                    <img src="/media/salad.jpg" alt="Salad" class="img-fluid rounded mx-auto d-block image-effect">
+                    <p
+                        class="position-absolute title start-50 translate-middle-x text-white px-2 py-1 text-uppercase font-weight-bold">
+                        SALADS
+                    </p>
+                </div>
+            </a>
+        </div>
+        <div class="col-6 col-md-3 mb-4">
+            <a class="d-block position-relative text-decoration-none" href="#">
+                <div class="text-center">
+                    <img src="/media/vegitarians.webp" alt="Vegetarian"
+                        class="img-fluid rounded mx-auto d-block image-effect">
+                    <p
+                        class="position-absolute title start-50 translate-middle-x text-white px-2 py-1 text-uppercase font-weight-bold">
+                        VEGETARIAN
+                    </p>
+                </div>
+            </a>
+        </div>
+        <div class="col-6 col-md-3 mb-4">
+            <a class="d-block position-relative text-decoration-none" href="#">
+                <div class="text-center">
+                    <img src="/media/most popular.webp" alt="Most Popular"
+                        class="img-fluid rounded mx-auto d-block image-effect">
+                    <p
+                        class="position-absolute title start-50 translate-middle-x text-white px-2 py-1 text-uppercase font-weight-bold">
+                        MOST POPULAR
+                    </p>
+                </div>
+            </a>
+        </div>
+        <div class="col-6 col-md-3 mb-4">
+            <a class="d-block position-relative text-decoration-none" href="#">
+                <div class="text-center">
+                    <img src="/media/desserts.jpg" alt="Desserts"
+                        class="img-fluid rounded mx-auto d-block image-effect">
+                    <p
+                        class="position-absolute title start-50 translate-middle-x text-white px-2 py-1 text-uppercase font-weight-bold">
+                        DESSERTS
+                    </p>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
 
+
+
+<section>
+    <div class="mt-4">
+        <h2 class="mb-4 text-center e-topic py-4">Explore by Topic</h2>
+        <div class="row d-flex justify-content-between">
+            {% for topic in topics %}
+            <div class="col-4 col-md-auto text-center mb-3 mt-4">
+                <img src="{{ topic.image.url }}" alt="{{ topic.name }}" class="rounded-circle category-image">
+                <p class="mt-2 category-name">{{ topic.name|upper }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
                 {% for item in articles %}
                 {% include 'components/article_card.html' %}
                 {% empty %}
@@ -98,50 +282,169 @@
                     <h4 class="alert-heading">No articles available now</h4>
                     <p>You can create an account and write new articles for us</p>
                     <hr>
-                    <p class="mb-0">Are you are building writes?
+                    <p class="mb-0">Are you a writer?
                         <a href="{% url 'register' %}">Register</a>
                         to write articles for us
                     </p>
                 </div>
                 {% endfor %}
-                <nav aria-label="article navigation">
+
+                <nav aria-label="Article pagination" class="mt-4">
                     <ul class="pagination justify-content-center">
                         {% if articles.has_previous %}
                         <li class="page-item">
-                            <a class="page-link" href="?p={{ articles.previous_page_number }}">previous</a>
+                            <a class="page-link" href="?p={{ articles.previous_page_number }}">Previous</a>
                         </li>
                         {% endif %}
-                        <li class="page-item">
-                            <a class="page-link active">
+                        <li class="page-item active">
+                            <span class="page-link">
                                 {{ articles.number }} of {{ articles.paginator.num_pages }}
-                            </a>
+                            </span>
                         </li>
                         {% if articles.has_next %}
                         <li class="page-item">
-                            <a class="page-link" href="?p={{ articles.next_page_number }}">next</a>
+                            <a class="page-link" href="?p={{ articles.next_page_number }}">Next</a>
                         </li>
                         {% endif %}
                     </ul>
                 </nav>
             </div>
+
+            <!-- <div class="col-lg-4 mt-4 mt-lg-0 " style="max-width: 350px;">
+                <h2 class="mb-4 text-center e-topic">Latest Blog Article</h2>
+                {% if latest_article %}
+                <div class="row latest_carticle_card g-3">
+                    <div class="col-md-4">
+                        <img src="{{ latest_article.image.url }}" class="card-img-top rounded-circle"
+                            style="height: 100px; object-fit: cover;" alt="{{ latest_article.title }}">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h4 class="card-title">{{ latest_article.title|truncatewords:3 }}</h4>
+                            <p class="card-text"><small class="text-muted">Published on: <br> {{ latest_article.created_at }}</small></p>
+                            <a href="{% url 'detail' latest_article.id %}" class="btn btn-primary mb-3">Read more</a>
+                        </div>
+                    </div>
+                </div>
+                {% else %}
+                <p class="text-center">No blog articles available.</p>
+                {% endif %}
+            </div> -->
         </div>
     </div>
-    <div class="col-md-4">
-        <h2 class="text-center">Latest Blog Article</h2>
-        <div class="card  mx-auto d-flex" style="width: 16rem; height: 100vh;">
+</section>
+<section class="mt-5">
+    <div class="row">
+        <div class="col-lg-8">
+            <h1 class="mb-4">THE LATEST & GREATEST</h1>
 
-            <img src="{{ latest_article.image.url }}" class="card-img-top " style="height: 200px; object-fit: cover;"
-                alt="{{ latest_article.title }}">
-            <div class="card-body">
-                {% if latest_article %}
-                <h3>{{ latest_article.title|truncatewords:3 }}</h3>
-                <p>{{ latest_article.content|truncatewords:10 | safe }}</p>
-                <p><small>Published on: {{ latest_article.created_at }}</small></p>
-                <a href="{% url 'detail' latest_article.id %}">Read more</a>
-                {% else %}
-                <p>No blog articles available.</p>
-                {% endif %}
+            {% if latest_article %}
+
+            <div class="latest-article-card mb-4 border-0">
+                <div class="row g-0 p-2">
+                    <div class="col-md-4">
+                        <img src="{{ latest_article.image.url }}" class="img-fluid rounded"
+                            style="height: 300px; width: 225px;" alt="{{ latest_article.title }}">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h6 class="text-muted">{{ latest_article.created_at|date:"F j, Y" }}</h6>
+                            <h2 class="card-title">{{ latest_article.title }}</h2>
+                            <p class="card-text">{{ latest_article.content|safe|truncatewords:20 }}</p>
+                            <a href="{% url 'detail' latest_article.id %}"
+                                class="btn px-0 text-warning fw-bold fs-4 text-decoration-none">CONTINUE READING</a>
+                        </div>
+                    </div>
+                    <div class="view-btn">
+                        <button class="btn mt-2 mb-2">VIEW MORE RECENT POSTS</button>
+                    </div>
+                </div>
             </div>
+
+            {% else %}
+            <p class="text-center">No blog articles available.</p>
+            {% endif %}
+
+
+        </div>
+
+        <div class="col-lg-4">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h3 class="card-title text-center mb-4">20 healthy FREEZER MEALS</h3>
+                    <div class="row g-2">
+                        <div class="col-12">
+                            <img src="/media/top20 meals.webp" alt="Meal 1" class="img-fluid rounded">
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title mb-3">RECIPE COLLECTIONS</h4>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Instant Pot Recipes
+                            <span class="badge bg-primary rounded-pill">48</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Vegan Recipes
+                            <span class="badge bg-primary rounded-pill">200</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Meal Prep Recipes
+                            <span class="badge bg-primary rounded-pill">34</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Quick and Easy Recipes
+                            <span class="badge bg-primary rounded-pill">467</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Pasta Recipes
+                            <span class="badge bg-primary rounded-pill">174</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Soup Recipes
+                            <span class="badge bg-primary rounded-pill">69</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Most Popular Recipes
+                            <span class="badge bg-primary rounded-pill">85</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="hero-section">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <img src="/media/toprecipe.webp" alt="Top 25 Recipes Cookbook" class="cookbook-image">
+            </div>
+            <div class="col-md-6 content-section text-center">
+                <div class="get-it-now">get it now</div>
+                <h2 class="e-topic mb-3">PINCH OF YUM COOKBOOK</h2>
+                <p class="e-topic">The eBook includes our most popular 25 recipes in a beautiful, easy to download
+                    format. Enter your email and we'll send it right over!</p>
+                <form class="row g-1">
+                    <div class="col-sm-5">
+                        <input type="text" class="form p-2" placeholder="First Name">
+                    </div>
+                    <div class="col-sm-5">
+                        <input type="email" class="form p-2" placeholder="Email">
+                    </div>
+                    <div class="col-sm-2">
+                        <button type="submit" class="btn btn-go btn-warning me-4">GO</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="heart-icon">
+            <i class="fas fa-heart"></i>
         </div>
     </div>
 </section>

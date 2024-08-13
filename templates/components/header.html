@@ -4,59 +4,77 @@
         color: black;
         font-weight: bold;
         font-family: Arvo, Georgia, Cambria, Times New Roman, Times, serif;
-
     }
 
-    .house{
+    .house {
         color: rgba(114, 63, 95, 0.9);
         font-size: 2.5rem;
-        font-weight: bold;
+        /* font-weight: bold; */
         font-family: Bitter, Georgia, Cambria, Times New Roman, Times, serif;
+    }
+
+    @media (max-width: 768px) {
+        .house {
+            font-size: 2rem;
+        }
+        .nav {
+            flex-direction: column;
+            text-align: center;
+        }
+        .nav-link {
+            padding: 10px 0;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .house {
+            font-size: 1.5rem;
+        }
+        .nav {
+            flex-direction: column;
+            text-align: center;
+        }
+        .nav-link {
+            padding: 8px 0;
+        }
     }
 </style>
 {% endblock css %}
 
-
-<header
-    class="container d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-2  border-bottom">
-    <div class="col-md-3 house d-flex align-items-center justify-content-start  mb-md-0" >
-        <a href="/" class="house d-inline-flex   text-decoration-none" >
+<header class="d-flex flex-wrap align-items-center justify-content-between py-2 border-bottom">
+    <div class="col-12 col-md-3 text-center text-md-start mb-2 mb-md-0">
+        <a href="/" class="house text-decoration-none">
             CookingStories
         </a>
     </div>
-    <ul class="nav col-12 d-flex align-items-center col-md-auto uppercase fs-5 mb-md-0 pt-3">
-        <li><a href="{% url 'home' %}" class="nav-link px-2 ">HOME</a></li>
-        <li><a href="" class="nav-link px-2">CONTACE</a></li>
-        <!-- <li><a href="#" class="nav-link px-2">Pricing</a></li>
-        <li><a href="#" class="nav-link px-2">FAQs</a></li> -->
-        <li><a href="#" class="nav-link px-2">ABOUT</a></li>
-    </ul>
 
+    <div class="col-12 col-md-6 d-flex justify-content-center mb-2 mb-md-0">
+        <ul class="nav justify-content-center justify-content-md-end fw-bold uppercase fs-5">
+            <li class="nav-item"><a href="{% url 'home' %}" class="nav-link px-2">HOME</a></li>
+            <li class="nav-item"><a href="{% url 'contact' %}" class="nav-link px-2">CONTACT</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2">ABOUT</a></li>
+        </ul>
+    </div>
 
-    <div class="col-md-3 text-end">
+    <div class="col-12 col-md-3 text-center text-md-end">
         {% if user.is_authenticated %}
-        <div class="dropdown open">
-            <a class="btn btn-success px-3 fs-5 align-items-center dropdown-toggle " type="button" id="triggerId"
+        <div class="dropdown">
+            <a class="btn btn-success px-3 fs-6 align-items-center dropdown-toggle" type="button" id="triggerId"
                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 {{user.username|title}}
             </a>
             <div class="dropdown-menu" aria-labelledby="triggerId">
-
                 {% if user.is_superuser %}
                 <a class="dropdown-item" href="{% url 'admin:index' %}">Dashboard</a>
-
                 {% endif %}
-
-                <a class="dropdown-item" href="{% url 'my_articles' %}">My article</a>
-                <a class="dropdown-item" href="{% url 'add' %}"> Create</a>
+                <a class="dropdown-item" href="{% url 'my_articles' %}">My articles</a>
+                <a class="dropdown-item" href="{% url 'add' %}">Create</a>
                 <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
-
             </div>
         </div>
-
         {% else %}
-        <a href="{% url 'login' %}" class="btn btn-outline-dark  text-decoration-none fs-6 px-3 fw-bold">Login</a>
-        <a href="{% url 'register' %}" class=" btn btn-warning text-decoration-none fs-6 px-3 fw-bold">register</a>
+        <a href="{% url 'login' %}" class="btn btn-outline-dark text-decoration-none fs-6 px-3 fw-bold">Login</a>
+        <a href="{% url 'register' %}" class="btn btn-warning text-decoration-none fs-6 px-3 fw-bold">Register</a>
         {% endif %}
     </div>
 </header>

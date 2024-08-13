@@ -11,7 +11,7 @@ from .forms import ArticleForm
 # Create your views here.
 def home_view(request):
     # get all articles
-    article_list = Article.objects.all()
+    article_list = Article.objects.select_related('author').all()
     topic_list = Topic.objects.all()
     latest_article = Article.objects.order_by('-created_at').first()
     # pagination
@@ -25,6 +25,9 @@ def home_view(request):
         'latest_article': latest_article,
     }
     return render(request, 'Cookingstories/home.html', ctx)
+
+
+
 
 
 
@@ -183,13 +186,30 @@ def logout_view(request):
 #     return render(request, 'accounts/profile.html')
 
 
+from django.shortcuts import render
+from django.core.mail import send_mail
+from django.contrib import messages
+from django.conf import settings
 
+def contact_view(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        subject = request.POST.get('subject')
+        message = request.POST.get('message')
 
+        # Send an email (optional)
+        send_mail(
+            subject,
+            f'Message from {name} <{email}>:\n\n{message}',
+            settings.DEFAULT_FROM_EMAIL,
+            [settings.DEFAULT_FROM_EMAIL],
+            fail_silently=False,
+        )
 
-# def latest_article_view(request):
-#     latest_article = Article.objects.order_by('-created_at')[:5]  # Adjust the number to show more or fewer recipes
-#     return render(request, 'CookingStories/detail.html', {'latest_article': latest_article})
-
+        messages.success(request, 'Your message has been sent successfully!')
+    
+    return render(request, 'Cookingstories/contact.html')
 
 
 

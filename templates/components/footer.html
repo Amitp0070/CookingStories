@@ -1,10 +1,161 @@
-<footer class="py-3 my-4">
-    <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Home</a></li>
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Features</a></li>
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Pricing</a></li>
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">FAQs</a></li>
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">About</a></li>
-    </ul>
-    <p class="text-center text-body-secondary">© 2024 Company, Inc</p>
-  </footer>
+{% block css %}
+<style>
+  footer {
+    background-color: #f8f9fa;
+    padding: 50px 0;
+    color: #333;
+  }
+  footer p {
+    font-family: Bitter, Georgia, Cambria, Times New Roman, Times, serif;
+  }
+
+  .footer-heading {
+    font-weight: bold;
+    margin-bottom: 20px;
+    font-family: Bitter, Georgia, Cambria, Times New Roman, Times, serif;
+  }
+  h3{
+    font-family: Bitter, Georgia, Cambria, Times New Roman, Times, serif;
+  }
+
+  .footer-list {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  .footer-list li {
+    margin-bottom: 5px;
+    font-family: Bitter, Georgia, Cambria, Times New Roman, Times, serif;
+  }
+
+  .footer-list a {
+    color: #333;
+    text-decoration: none;
+  }
+
+  .footer-list a:hover {
+    text-decoration: underline;
+  }
+
+  .signup-section {
+    background-color: #8e4162;
+    color: white;
+    padding: 30px;
+    /* border-radius: 5px; */
+  }
+
+  .social-icons a {
+    color: #8e4162;
+    font-size: 24px;
+    margin-right: 15px;
+  }
+
+  .brand-logo {
+    max-width: 150px;
+  }
+
+  .other-brands img {
+    max-height: 40px;
+    margin-right: 15px;
+  }
+
+  .house {
+        color: #8e4162;
+        font-size: 2rem;
+        /* font-weight: bold; */
+        font-family: Bitter, Georgia, Cambria, Times New Roman, Times, serif;
+    }
+
+  @media (max-width: 768px) {
+        .house {
+            font-size: 2rem;
+        }
+      }
+
+  @media (max-width: 576px) {
+    .house {
+      font-size: 1.5rem;
+    }
+  }
+</style>
+{% endblock css %}
+
+<footer>
+  <div class="p-3">
+    <div class="row">
+      <div class="col-md-3 ">
+        <h5 class="footer-heading">PINCH OF YUM</h5>
+        <ul class="footer-list">
+          <li><a href="#">About</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Recipe Index</a></li>
+          <li><a href="#">Blogging Resources</a></li>
+          <li><a href="#">Income Reports</a></li>
+          <li><a href="#">Sponsored Content</a></li>
+          <li><a href="#">Media Mentions</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+        
+      </div>
+      <div class="col-md-3 ">
+        <h5 class="footer-heading">FOOD & RECIPES</h5>
+        <ul class="footer-list">
+          <li><a href="#">Sugar Free January</a></li>
+          <li><a href="#">Freezer Meals 101</a></li>
+          <li><a href="#">Quick and Easy Recipes</a></li>
+          <li><a href="#">Instant Pot Recipes</a></li>
+          <li><a href="#">Pasta Recipes</a></li>
+          <li><a href="#">Vegan Recipes</a></li>
+          <li><a href="#">Soup Recipes</a></li>
+          <li><a href="#">Taco Recipes</a></li>
+          <li><a href="#">Meal Prep Recipes</a></li>
+        </ul>
+
+
+      </div>
+      <div class="col-md-6">
+        <div class="signup-section mb-4">
+          <h3>SIGNUP FOR EMAIL UPDATES</h3>
+          <p>Get a Free Cookbook with our top 25 recipes.</p>
+          <form method="post" class="row g-1">
+            <div class="col-sm-5">
+              <input type="text" class="form p-2" placeholder="First Name">
+            </div>
+            <div class="col-sm-5">
+              <input type="email" class="form p-2" placeholder="Email">
+            </div>
+            <div class="col-sm-2">
+              <button type="submit" class="btn btn-warning">GO</button>
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+    <div class="row d-flex mt-2">
+      <div class="col-md-6">
+        <div class="social-icons mb-3">
+          <a href="#"><i class="fab fa-2x fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-2x fa-linkedin"></i></a>
+          <a href="#"><i class="fab fa-2x fa-github"></i></a>
+          <a href="#"><i class="fab fa-2x fa-facebook"></i></a>
+        </div>
+        <div class="home_title d-flex justify-content-between">
+          <a href="/" class="house text-decoration-none">
+            CookingStories
+          </a>
+          <p>&copy; 2024 Pinch of Yum. All Rights Reserved.<br>A Raptive Partner Site.</p>
+       
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row mt-4">
+      <div class="col-12 text-center">
+        
+        <p><a href="#">Privacy Policy</a> | <a href="#">Terms</a></p>
+      </div>
+    </div>
+  </div>
+</footer>

@@ -1,7 +1,7 @@
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.contrib import messages
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 # pagination
 from django.core.paginator import Paginator
 from .models import Article, Topic
@@ -13,7 +13,7 @@ def home_view(request):
     # get all articles
     article_list = Article.objects.select_related('author').all()
     topic_list = Topic.objects.all()
-    latest_article = Article.objects.order_by('-created_at').first()
+    latest_article = Article.objects.order_by('-created_at')[:4]
     # pagination
     paginator = Paginator(article_list, 8)
     page = request.GET.get('p',1)
@@ -215,3 +215,8 @@ def contact_view(request):
 
 
 
+
+def topic_articles(request, topic_id):
+    topic = get_object_or_404(Topic, id=topic_id)
+    articles = Article.objects.filter(topic=topic)
+    return render(request, 'Cookingstories/articles_by_topic.html', {'topic': topic, 'articles': articles})

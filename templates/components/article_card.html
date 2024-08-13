@@ -4,9 +4,9 @@
         background: #ffffff;
         border-radius: 10px;
         overflow: hidden;
-        margin-bottom: 20px;
-        transition: all 0.3s ease;
+        margin-bottom: 1.5rem;
         border: none;
+        transition: all 0.3s ease;
     }
 
     .article-card:hover {
@@ -14,185 +14,172 @@
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
 
-    .article-card .author-header {
+    .author-header {
         display: flex;
         align-items: center;
-        padding: 15px;
         border-bottom: 1px solid #ddd;
         background: #f8f9fa;
+        padding: 1rem;
     }
 
-    .article-card .author-header img {
+    .author-header img {
         border-radius: 50%;
         width: 80px;
         height: 80px;
         object-fit: cover;
-        margin-right: 15px;
+        margin-right: 1rem;
     }
 
-    .article-card .author-header .author-info {
+    .author-info {
         font-size: 0.9em;
         color: #000000;
     }
 
-    .article-card .title {
-        padding: 15px;
+    .title {
+        padding: 1rem;
         font-size: 1.5em;
         font-weight: bold;
-        /* text-decoration: none; */
-        background-color: #007bff;
-        
+        background-color: rgba(141, 72, 116, 0.9);
+        color: #ffffff;
+        text-decoration: none;
     }
 
-    .article-card .content {
-        padding: 15px;
+    .content {
+        padding: 1rem;
         color: #333;
     }
 
-    .article-card .content p {
-        margin-bottom: 15px;
-    }
-
-    .article-card .btn-group {
-        padding: 15px;
+    .btn-group {
+        padding: 1rem;
         display: flex;
         justify-content: space-between;
         align-items: center;
     }
 
-    .article-card .btn-group .btn {
-        margin-right: 10px;
+    .btn-group .btn {
+        margin-right: 0.5rem;
     }
 
-    .article-card .btn-group .btn-outline-primary {
+    .btn-outline-primary {
         color: #007bff;
         border-color: #007bff;
     }
 
-    .article-card .btn-group .btn-outline-primary:hover {
+    .btn-outline-primary:hover {
         background-color: #007bff;
         color: #fff;
     }
 
-    .article-card .btn-group .btn-outline-secondary {
+    .btn-outline-secondary {
         color: #6c757d;
         border-color: #6c757d;
     }
 
-    .article-card .btn-group .btn-outline-secondary:hover {
+    .btn-outline-secondary:hover {
         background-color: #6c757d;
         color: #fff;
     }
 
-    .article-card .image-container img {
-        border-top: 1px solid #ddd;
+    .image-container img {
         width: 100%;
-        height: 40%;
-        border-radius: 10px;
+        height: auto;
+        border-radius: 15px;
         object-fit: cover;
-    }
-
-    .card-text small.text-muted {
-        color: #6c757d;
+        padding: 6px;
     }
 
     /* Responsive styles */
     @media (max-width: 991px) {
-        .article-card .author-header img {
+        .author-header img {
             width: 60px;
             height: 60px;
         }
 
-        .article-card .title {
+        .title {
             font-size: 1.3em;
         }
     }
 
     @media (max-width: 767px) {
-        .article-card .author-header {
+        .author-header {
             flex-direction: column;
             text-align: center;
         }
 
-        .article-card .author-header img {
-            margin-bottom: 10px;
+        .author-header img {
+            margin-bottom: 0.5rem;
         }
 
-        .article-card .title {
+        .title {
             font-size: 1.2em;
             text-align: center;
         }
 
-        .article-card .btn-group {
+        .btn-group {
             flex-direction: column;
             align-items: center;
         }
 
-        .article-card .btn-group .btn {
+        .btn-group .btn {
             width: 100%;
-            margin-bottom: 10px;
+            margin-bottom: 0.5rem;
         }
 
-        .article-card .image-container {
-            margin-left: 0;
-            margin-top: 15px;
+        .image-container {
+            margin-top: 1rem;
         }
     }
 
     @media (max-width: 576px) {
-        .article-card .title {
+        .title {
             font-size: 1.1em;
         }
 
-        .article-card .content {
+        .content {
             font-size: 0.9em;
         }
 
-        .article-card .btn-group .btn {
+        .btn-group .btn {
             font-size: 0.9em;
         }
-        
     }
 </style>
 
-<div class="row d-flex justify-content-center article-card">
-    <div class="col-lg-10 mb-3">
+<div class="d-flex justify-content-center">
+    <div class="article-card">
         <div class="author-header">
             {% if item.author_image %}
             <img src="{{ item.author_image.url }}" alt="{{ item.author.username }}">
             {% endif %}
             <div class="author-info">
-                <span class="fs-3">
-                    <i class="bi bi-person"></i>
-                    {{ item.author.username }}
-                </span>
-                <p class="card-text"><small class="text-muted">Published on: {{ item.created_at|date:"F j, Y" }}</small></p>
+                <span class="fs-3 fw-bold">{{ item.author.username }}</span>
+                <p class="card-text">
+                    <small class="text-muted">Published on: {{ item.created_at|date:"F j, Y" }}</small>
+                </p>
             </div>
         </div>
-        <div class="row mt-2">
-            <div class="col-lg-8 content-section">
-                <a href="{% url 'detail' item.id %}" class="fs-3 nav-link title">
+        <div class="row no-gutters">
+            <div class="col-lg-8">
+                <a href="{% url 'detail' item.id %}" class="title">
                     {{ item.title }}
                 </a>
-                <p class="card-text content">
+                <p class="content">
                     {{ item.content|truncatewords:40|safe }}
                 </p>
-                <div class="d-flex justify-content-between align-items-center btn-group">
-                    <div class="btn-group">
-                        <a href="{% url 'detail' item.id %}" class="btn btn-sm btn-outline-secondary">View</a>
-                        {% if item.author == user %}
-                        <a href="{% url 'edit' item.id %}" class="btn btn-sm btn-outline-secondary">Edit</a>
-                        {% else %}
-                        <a href="" class="btn btn-sm btn-outline-primary">
-                            <i class="bi bi-hand-thumbs-up"></i>
-                            {{ item.likes }}
-                        </a>
-                        {% endif %}
-                    </div>
-                    <small class="text-body-secondary">
-                        {{ item.created_at|date:"F j, Y" }}
-                    </small>
+                <div class="btn-group">
+                    <a href="{% url 'detail' item.id %}" class="btn btn-outline-secondary">View</a>
+                    {% if item.author == user %}
+                    <a href="{% url 'edit' item.id %}" class="btn btn-outline-secondary">Edit</a>
+                    {% else %}
+                    <a href="" class="btn btn-sm btn-outline-primary">
+                        <i class="bi bi-hand-thumbs-up"></i>
+                        {{ item.likes }}
+                    </a>
+                    {% endif %}
                 </div>
+                <small class="text-muted fs-6">
+                    {{ item.created_at|date:"F j, Y" }}
+                </small>
             </div>
             <div class="col-lg-4 image-container">
                 <img src="{{ item.image.url }}" alt="{{ item.title }}">

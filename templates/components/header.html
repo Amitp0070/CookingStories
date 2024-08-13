@@ -1,26 +1,40 @@
 {% block css %}
 <style>
     .nav-link {
-        color: black;
-        font-weight: bold;
         font-family: Arvo, Georgia, Cambria, Times New Roman, Times, serif;
     }
 
     .house {
-        color: rgba(114, 63, 95, 0.9);
+        color: rgb(124, 63, 102);
         font-size: 2.5rem;
-        /* font-weight: bold; */
         font-family: Bitter, Georgia, Cambria, Times New Roman, Times, serif;
+    }
+
+    /* Dropdown Menu Styling */
+    .dropdown-menu {
+        background-color: #f8f9fa; /* Light gray background for dropdown */
+        border-radius: 0.25rem;
+    }
+
+    .dropdown-item {
+        color: black;
+        font-weight: bold;
+    }
+
+    .dropdown-item:hover {
+        background-color: #e9ecef;
     }
 
     @media (max-width: 768px) {
         .house {
             font-size: 2rem;
         }
+
         .nav {
             flex-direction: column;
             text-align: center;
         }
+
         .nav-link {
             padding: 10px 0;
         }
@@ -30,10 +44,12 @@
         .house {
             font-size: 1.5rem;
         }
+
         .nav {
             flex-direction: column;
             text-align: center;
         }
+
         .nav-link {
             padding: 8px 0;
         }
@@ -49,7 +65,7 @@
     </div>
 
     <div class="col-12 col-md-6 d-flex justify-content-center mb-2 mb-md-0">
-        <ul class="nav justify-content-center justify-content-md-end fw-bold uppercase fs-5">
+        <ul class="nav justify-content-center justify-content-md-end fw-bold text-dark uppercase fs-5">
             <li class="nav-item"><a href="{% url 'home' %}" class="nav-link px-2">HOME</a></li>
             <li class="nav-item"><a href="{% url 'contact' %}" class="nav-link px-2">CONTACT</a></li>
             <li class="nav-item"><a href="#" class="nav-link px-2">ABOUT</a></li>
@@ -59,18 +75,18 @@
     <div class="col-12 col-md-3 text-center text-md-end">
         {% if user.is_authenticated %}
         <div class="dropdown">
-            <a class="btn btn-success px-3 fs-6 align-items-center dropdown-toggle" type="button" id="triggerId"
-                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                {{user.username|title}}
-            </a>
-            <div class="dropdown-menu" aria-labelledby="triggerId">
+            <button class="btn btn-success px-3 fs-6 align-items-center dropdown-toggle" type="button" id="userDropdown"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                {{ user.username|title }}
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
                 {% if user.is_superuser %}
-                <a class="dropdown-item" href="{% url 'admin:index' %}">Dashboard</a>
+                <li><a class="dropdown-item" href="{% url 'admin:index' %}">Dashboard</a></li>
                 {% endif %}
-                <a class="dropdown-item" href="{% url 'my_articles' %}">My articles</a>
-                <a class="dropdown-item" href="{% url 'add' %}">Create</a>
-                <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
-            </div>
+                <li><a class="dropdown-item" href="{% url 'my_articles' %}">My articles</a></li>
+                <li><a class="dropdown-item" href="{% url 'add' %}">Create</a></li>
+                <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+            </ul>
         </div>
         {% else %}
         <a href="{% url 'login' %}" class="btn btn-outline-dark text-decoration-none fs-6 px-3 fw-bold">Login</a>

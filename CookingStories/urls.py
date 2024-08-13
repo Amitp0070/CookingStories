@@ -18,6 +18,7 @@ urlpatterns = [
     path('article/<int:id>/detail', views.detail_view, name='detail'),
     # path('category/<int:topic_id>/', views.topic_view, name='topic_detail'),
     path('contact/', views.contact_view, name='contact'),
+    path('topic/<int:topic_id>/', views.topic_articles, name='topic_articles'),
     
    
     

@@ -16,9 +16,11 @@ urlpatterns = [
     path('article/<int:id>/edit', views.edit_view, name='edit'),
     path('article/<int:id>/delete', views.delete_view, name='delete'),
     path('article/<int:id>/detail', views.detail_view, name='detail'),
+    path('about/', views.about_view, name='about'),
     # path('category/<int:topic_id>/', views.topic_view, name='topic_detail'),
     path('contact/', views.contact_view, name='contact'),
     path('topic/<int:topic_id>/', views.topic_articles, name='topic_articles'),
+    path('api/rate-article/<int:article_id>/', views.rate_article, name='rate_article'),
     
    
     

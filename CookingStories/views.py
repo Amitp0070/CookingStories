@@ -11,7 +11,7 @@ from .forms import ArticleForm
 # Create your views here.
 def home_view(request):
     # get all articles
-    article_list = Article.objects.select_related('author').all()
+    article_list = Article.objects.order_by('-created_at')[:2]
     topic_list = Topic.objects.all()
     latest_article = Article.objects.order_by('-created_at')[:4]
     # pagination
@@ -220,3 +220,33 @@ def topic_articles(request, topic_id):
     topic = get_object_or_404(Topic, id=topic_id)
     articles = Article.objects.filter(topic=topic)
     return render(request, 'Cookingstories/articles_by_topic.html', {'topic': topic, 'articles': articles})
+
+
+
+from django.http import JsonResponse
+from django.views.decorators.http import require_POST
+from django.views.decorators.csrf import csrf_exempt
+from .models import Article
+
+@require_POST
+@csrf_exempt
+def rate_article(request, article_id):
+    try:
+        article = Article.objects.get(id=article_id)
+        rating = int(request.POST.get('rating', 0))
+
+        if 1 <= rating <= 5:  # Ensure rating is between 1 and 5
+            article.update_rating(rating)
+            return JsonResponse({'success': True, 'new_rating': article.rating})
+        else:
+            return JsonResponse({'success': False, 'message': 'Invalid rating value.'})
+
+    except Article.DoesNotExist:
+        return JsonResponse({'success': False, 'message': 'Article not found.'})
+    except Exception as e:
+        return JsonResponse({'success': False, 'message': str(e)})
+
+
+
+def about_view(request):
+    return render(request, 'Cookingstories/about.html')

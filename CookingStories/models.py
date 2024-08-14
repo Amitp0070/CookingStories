@@ -16,11 +16,22 @@ class Article(models.Model):
     content = RichTextField()
     topic = models.ForeignKey(Topic, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now=True,)
+    rating = models.FloatField(default=0)  # Average rating
+    rating_count = models.IntegerField(default=0)  # Number of ratings
     author = models.ForeignKey("auth.User", on_delete=models.CASCADE)
     likes = models.PositiveIntegerField("Total likes", default=0)
-    author_image = models.ImageField(upload_to='authors/', blank=True, null=True)  # New field for author's image
+    author_image = models.ImageField("Author image", upload_to='authors/',)  # New field for author's image
+    def update_rating(self, new_rating):
+        total_rating = self.rating * self.rating_count
+        self.rating_count += 1
+        total_rating += new_rating
+        self.rating = total_rating / self.rating_count
+        self.save()
     def __str__(self):
         return self.title
+    
+
+
     
 
     

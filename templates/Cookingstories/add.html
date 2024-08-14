@@ -51,7 +51,7 @@
         <div class="col-lg-8 my-5">
             <div class="card shadow-lg border-0">
                 <div class="card-body p-5">
-                    <h1 class="display-5 text-center mb-4">Create Your Article</h1>
+                    <h1 class="display-5 text-center mb-4">{% if article %}Edit Your Article{% else %}Create Your Article{% endif %}</h1>
 
                     <!-- Display success or error messages -->
                     {% include 'components/message.html' %}
@@ -80,8 +80,8 @@
                             <label for="image" class="form-label">Article Image</label>
                             <input type="file" class="form-control form-control-lg" name="image" id="image" />
                             {% if article and article.image %}
-                            <div class="mt-2">
-                                <small class="text-muted">Current image: <a href="{{ article.image.url }}" target="_blank">{{ article.image }}</a></small>
+                            <div class="mt-2 text-center">
+                                <small class="text-muted d-block mt-2">Current article image: <a href="{{ article.image.url }}" target="_blank">{{ article.image.name }}</a></small>
                             </div>
                             {% endif %}
                         </div>
@@ -92,7 +92,7 @@
                             <select class="form-select form-select-lg" name="topic" id="topic">
                                 {% for topic in topics %}
                                 <option value="{{ topic.id }}"
-                                    {% if article and article.topic.name == topic.name %} selected {% endif %}>
+                                    {% if article and article.topic.id == topic.id %} selected {% endif %}>
                                     {{ topic.name }}
                                 </option>
                                 {% endfor %}
@@ -103,9 +103,10 @@
                         <div class="form-group mb-4">
                             <label for="author_image" class="form-label">Author Image</label>
                             <input type="file" class="form-control form-control-lg" name="author_image" id="author_image" />
-                            {% if article and articles.author_image %}
-                            <div class="mt-2">
-                                <small class="text-muted">Current author image: <a href="{{ articles.author_image.url }}" target="_blank">{{ articles.author_image }}</a></small>
+                            {% if article and article.author_image %}
+                            <div class="mt-2 text-center">
+                                <!-- Display the current author's image if it exists -->
+                                <small class="text-muted d-block mt-2">Current author image: <a href="{{ article.author_image.url }}" target="_blank">{{ article.author_image.name }}</a></small>
                             </div>
                             {% endif %}
                         </div>

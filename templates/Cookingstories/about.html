@@ -1,0 +1,327 @@
+{% extends 'layout/base.html' %}
+{% load static %}
+{% block css %}
+<style>
+    /* body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f8f9fa;
+    } */
+
+    .about-section {
+        margin: 30px 0;
+        background-color: #f1f0f094;
+        overflow: hidden;
+    }
+
+    .about-image {
+        max-width: 100%;
+        /* border-radius: 10px; */
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    /* .about-image:hover {
+        transform: scale(1.05);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    } */
+
+    .about-heading {
+        font-family: 'Georgia', serif;
+        color: rgb(124, 63, 102);
+        font-weight: bold;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    }
+
+    .about-subheading {
+        font-family: 'Bitter', Georgia, Cambria, "Times New Roman", Times, serif;
+        color: rgb(124, 63, 102);
+        font-weight: bold;
+        font-size: 2rem;
+    }
+
+    .about-text {
+        margin-top: 20px;
+        color: #555;
+        line-height: 1.6;
+        background-color: #ffffff;
+        padding: 15px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .breadcrumb-item a {
+        color: #5a2d82;
+        transition: color 0.3s;
+    }
+
+    .breadcrumb-item a:hover {
+        color: #3e1a5e;
+    }
+
+    @media (max-width: 576px) {
+        .about-subheading {
+            font-size: 1.5rem;
+        }
+    }
+
+    .footer-section {
+        background-color: #75455a;
+        color: #fff;
+        padding: 20px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .social-media {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    .social-media span {
+        margin-right: 10px;
+        font-size: 1rem;
+        font-weight: bold;
+    }
+
+    .social-icon {
+        margin-right: 10px;
+        color: #fff;
+        text-decoration: none;
+        font-size: 2.5rem;
+        padding-left: 10px;
+    }
+
+    .social-icon:hover {
+        color: #ddd;
+    }
+
+    .email-signup {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .email-signup span {
+        margin-bottom: 10px;
+        font-size: 2rem;
+        font-family: bold;
+        text-transform: uppercase;
+    }
+
+    .email-signup form {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .email-signup input[type="text"],
+    .email-signup input[type="email"] {
+        padding: 10px;
+        margin-right: 10px;
+        margin-bottom: 10px;
+        border: none;
+        /* border-radius: 5px; */
+        flex: 1 1 auto;
+    }
+
+    .about-button {
+        margin-bottom: 10px;
+        padding: 10px;
+        cursor: pointer;
+
+    }
+
+    .email-signup button:hover {
+        background-color: #e69a32;
+    }
+
+    @media (max-width: 768px) {
+        .footer-section {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .email-signup {
+            width: 100%;
+        }
+
+        .email-signup form {
+            flex-direction: column;
+            width: 100%;
+        }
+
+        .email-signup input[type="text"],
+        .email-signup input[type="email"],
+        .email-signup button {
+            width: 100%;
+            margin: 5px 0;
+        }
+    }
+
+    .content-section {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: flex-start;
+        padding: 20px;
+        background-color: #f9f9f9;
+        color: #333;
+    }
+
+    .text-content {
+        flex: 1 1 60%;
+        padding-right: 20px;
+    }
+
+    .image-content {
+        flex: 1 1 35%;
+    }
+
+    .image-content img {
+        max-width: 80%;
+        /* border-radius: 10px; */
+    }
+
+    h2 {
+        font-size: 1.5rem;
+        margin-top: 20px;
+    }
+
+    p {
+        margin-bottom: 15px;
+        line-height: 1.6;
+    }
+
+    ul {
+        list-style-type: none;
+        padding-left: 0;
+    }
+
+    ul li {
+        margin-bottom: 10px;
+    }
+
+    ul li strong {
+        font-weight: bold;
+    }
+
+    @media (max-width: 768px) {
+        .content-section {
+            flex-direction: column;
+        }
+
+        .text-content {
+            flex: 1 1 100%;
+            padding-right: 0;
+        }
+
+        .image-content {
+            flex: 1 1 100%;
+            margin-top: 20px;
+        }
+    }
+</style>
+{% endblock css %}
+
+
+{% block content %}
+
+<div class="about-section">
+    <div class="row">
+        <div class="col-lg-5">
+            <img src="/media/AMIT.jpg" alt="AMIT PATHAK" class="about-image">
+        </div>
+        <div class="col-lg-7">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item"><a href="#">About Me</a></li>
+                </ol>
+            </nav>
+            <h1 class="about-heading">About Me</h1>
+            <h2 class="about-subheading">HI, MY NAME IS AMIT PATHAK</h2>
+            <p class="about-text">
+                And [Your Website Name] is my little corner of the internet! <br><br>
+                I'm the voice, author, and creator behind [Your Website Name]. [Describe your journey, your passion, and
+                how you started your blog or business. Mention any significant milestones or achievements, and talk
+                about what your website is about.]<br><br>
+                I live in [Your Location] with [family/pets]. My favorite things in life are [mention some hobbies or
+                interests].
+            </p>
+        </div>
+    </div>
+    <div class="footer-section">
+        <div class="social-media">
+            <span>Follow Us</span>
+            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-pinterest"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+        </div>
+        <div class="email-signup">
+            <span>Sign Up for Email Updates</span>
+            <form>
+                <input type="text" placeholder="First Name" name="first-name">
+                <input type="email" placeholder="Email" name="email">
+                <button type="submit" class="btn btn-warning about-button fw-bold fs-5">Go</button>
+            </form>
+        </div>
+    </div>
+</div>
+<section class="content-section">
+    <div class="text-content">
+        <h2>I Love Food!</h2>
+        <p>
+            In this space, I am always sharing fresh, flavorful, (mostly) healthy recipes that I love to make
+            and eat in my real, actual, everyday life. If it wouldn't eat it in real life, I won't put it on the blog.
+            My goal is to inspire you with food that is both approachable AND exciting, whether you're cooking for
+            yourself,
+            your family, your roommates, or your friends. I want you to be so excited about these recipes that you
+            eagerly await
+            5pm when you go home from work and start cooking.
+        </p>
+        <p>
+            On a related note, I absolutely LOVE seeing the food that you're making. It would make my day if you tag
+            @girlndog on your Instagram photos and stories! We love to shout out our favorites on Fridays with our
+            Reader Awards on Instagram Stories.
+        </p>
+    </div>
+    <div class="image-content d-flex justify-content-end">
+        <img src="/media/about_con.png" alt="Author">
+    </div>
+    <div class="text-content">
+        <h2>Going Deeper</h2>
+        <p>
+            Along with all the recipes, I also use the blog to share bits and pieces of my life outside the kitchen -
+            from photos of my favorite trips, to reflections on grief and loss, to life as a dog mom.
+        </p>
+        <ul>
+            <li>
+                <strong>Travel:</strong> From living in the Philippines, to the ultimate European adventure,
+                to tacos in Austin! Oh my gosh, I love to travel. Check it all out here.
+            </li>
+            <li>
+                <strong>Loss:</strong> New Year's Day 2017, we lost our baby Afton the day after he was born.
+                I wrote so many raw and honest things on the blog and have found so many amazing online friendships
+                with readers through this story. You can learn more about our experience here.
+            </li>
+            <li>
+                <strong>Home Stuff:</strong> We bought our house in 2015 and have done multiple projects on it -
+                from finishing the basement to adding a nursery, to creating a sunrise studio for me to do my blogging
+                work.
+            </li>
+            <li>
+                <strong>Stage Dog:</strong> Iris is a queen and joined our family in 2015 and she’s the absolute best.
+                She’s also the official dog mascot. You can waste your day away looking at pictures of her here.
+            </li>
+        </ul>
+        <p>
+            I also share about my life on my personal Instagram @girlndogmom. I'd love if you followed me there too!
+        </p>
+    </div>
+
+</section>
+
+
+{% endblock content %}

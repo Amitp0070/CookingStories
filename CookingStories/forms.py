@@ -1,15 +1,3 @@
-# from ckeditor.widgets import CKEditorWidget
-# from django import forms
-# from .models import Article
-
-# class ArticleForm(forms.ModelForm):
-#     content = forms.CharField(widget=CKEditorWidget())
-    
-#     class Meta:
-#         model = Article
-#         fields = ['title', 'content', 'image', 'topic']
-
-
 from django import forms
 from .models import Article  # Assuming you have an Article model
 from ckeditor_uploader.widgets import CKEditorUploadingWidget  # Use CKEditor for rich text editing

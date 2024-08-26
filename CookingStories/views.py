@@ -7,11 +7,17 @@ from django.core.paginator import Paginator
 from .models import Article, Topic
 from django.contrib.auth.decorators import login_required
 from .forms import ArticleForm
+from django.http import JsonResponse
+from django.views.decorators.http import require_POST
+from django.views.decorators.csrf import csrf_exempt
+from django.core.mail import send_mail
+from django.conf import settings
+
 
 # Create your views here.
 def home_view(request):
     # get all articles
-    article_list = Article.objects.order_by('-created_at')[:2]
+    article_list = Article.objects.order_by('-created_at')[:3]
     topic_list = Topic.objects.all()
     latest_article = Article.objects.order_by('-created_at')[:4]
     # pagination
@@ -186,10 +192,6 @@ def logout_view(request):
 #     return render(request, 'accounts/profile.html')
 
 
-from django.shortcuts import render
-from django.core.mail import send_mail
-from django.contrib import messages
-from django.conf import settings
 
 def contact_view(request):
     if request.method == 'POST':
@@ -223,10 +225,6 @@ def topic_articles(request, topic_id):
 
 
 
-from django.http import JsonResponse
-from django.views.decorators.http import require_POST
-from django.views.decorators.csrf import csrf_exempt
-from .models import Article
 
 @require_POST
 @csrf_exempt

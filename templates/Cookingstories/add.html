@@ -88,7 +88,7 @@
 
                         <!-- Topic Field (City) -->
                         <div class="form-group mb-4">
-                            <label for="topic" class="form-label">City</label>
+                            <label for="topic" class="form-label">Topic</label>
                             <select class="form-select form-select-lg" name="topic" id="topic">
                                 {% for topic in topics %}
                                 <option value="{{ topic.id }}"
@@ -100,16 +100,16 @@
                         </div>
 
                         <!-- Author Image Field -->
-                        <div class="form-group mb-4">
+                        <!-- <div class="form-group mb-4">
                             <label for="author_image" class="form-label">Author Image</label>
                             <input type="file" class="form-control form-control-lg" name="author_image" id="author_image" />
                             {% if article and article.author_image %}
-                            <div class="mt-2 text-center">
+                            <div class="mt-2 text-center"> -->
                                 <!-- Display the current author's image if it exists -->
-                                <small class="text-muted d-block mt-2">Current author image: <a href="{{ article.author_image.url }}" target="_blank">{{ article.author_image.name }}</a></small>
+                                <!-- <small class="text-muted d-block mt-2">Current author image: <a href="{{ article.author_image.url }}" target="_blank">{{ article.author_image.name }}</a></small>
                             </div>
                             {% endif %}
-                        </div>
+                        </div> -->
 
                         <!-- Submit Button -->
                         <div class="d-grid gap-2">

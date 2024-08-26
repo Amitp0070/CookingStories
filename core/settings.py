@@ -190,16 +190,6 @@ SOCIALACCOUNT_PROVIDERS = {
     },
 }
 
-    # 'facebook': {
-    #     'SCOPE': [
-    #         'email',
-    #         'public_profile',
-    #     ],
-    #     'AUTH_PARAMS': {
-    #         'auth_type': 'online',
-    #     },
-    # }
-
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'amitpathak00700@gmail.com'  # Your email host provider

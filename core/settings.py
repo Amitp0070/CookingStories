@@ -38,25 +38,18 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    'django.contrib.sites',
-
-    'CookingStories',
-    
+    "django.contrib.sites",
+    "CookingStories",
     "django_htmx",
-    'allauth',
-    'allauth.account',
-    'widget_tweaks',
-    'ckeditor',
-    'ckeditor_uploader',
-
+    "allauth",
+    "allauth.account",
+    "widget_tweaks",
+    "ckeditor",
+    "ckeditor_uploader",
     # Optional -- requires install using `django-allauth[socialaccount]`.
-    'allauth.socialaccount',
-    'allauth.socialaccount.providers.google',
+    "allauth.socialaccount",
+    "allauth.socialaccount.providers.google",
     # 'allauth.socialaccount.providers.facebook',
-
-
-
-
 ]
 
 MIDDLEWARE = [
@@ -77,7 +70,7 @@ ROOT_URLCONF = "core.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        'DIRS': [TEMPLATES_DIR],
+        "DIRS": [TEMPLATES_DIR],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -85,7 +78,6 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
-
             ],
         },
     },
@@ -95,13 +87,10 @@ WSGI_APPLICATION = "core.wsgi.application"
 
 
 AUTHENTICATION_BACKENDS = [
-
     # Needed to login by username in Django admin, regardless of `allauth`
-    'django.contrib.auth.backends.ModelBackend',
-
+    "django.contrib.auth.backends.ModelBackend",
     # `allauth` specific authentication methods, such as login by email
-    'allauth.account.auth_backends.AuthenticationBackend',
-
+    "allauth.account.auth_backends.AuthenticationBackend",
 ]
 
 # Database
@@ -137,25 +126,33 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'  # Yeh setting batati hai ki default language English (US) hogi.
+LANGUAGE_CODE = "en-us"  # Yeh setting batati hai ki default language English (US) hogi.
 
-TIME_ZONE = 'Asia/Kolkata'  # Yeh setting batati hai ki default time zone Asia/Kolkata hogi.
+TIME_ZONE = (
+    "Asia/Kolkata"  # Yeh setting batati hai ki default time zone Asia/Kolkata hogi.
+)
 
-TIME_ZONE = 'UTC'  # Yeh setting batati hai ki default time zone UTC hogi. (Aapka pehla Time Zone overwrite ho gaya.)
+TIME_ZONE = "UTC"  # Yeh setting batati hai ki default time zone UTC hogi. (Aapka pehla Time Zone overwrite ho gaya.)
 
 USE_I18N = True  # Yeh setting enable karti hai internationalization ko, taaki aapki app multiple languages support kar sake.
 
 USE_TZ = True  # Yeh setting enable karti hai time zone awareness ko. Django timezone-aware dates aur times ko handle karega.
 
-STATICFILES_DIRS = [BASE_DIR.joinpath("staticfiles")]  # Yeh setting Django ko batati hai ki additional static files directory "staticfiles" mein milegi.
+STATICFILES_DIRS = [
+    BASE_DIR.joinpath("staticfiles")
+]  # Yeh setting Django ko batati hai ki additional static files directory "staticfiles" mein milegi.
 
-STATIC_ROOT = BASE_DIR.joinpath("static")  # Yeh setting batati hai ki collectstatic command se sab static files kahan collect hongi, yani "static" folder mein.
+STATIC_ROOT = BASE_DIR.joinpath(
+    "static"
+)  # Yeh setting batati hai ki collectstatic command se sab static files kahan collect hongi, yani "static" folder mein.
 
 MEDIA_URL = "media/"  # Yeh URL prefix hai media files ke liye. Jab aap media files ko serve karte ho, yeh URL prefix use hoga.
 
-MEDIA_ROOT = BASE_DIR.joinpath("media")  # Yeh setting batati hai ki uploaded media files "media" directory mein store hongi.
+MEDIA_ROOT = BASE_DIR.joinpath(
+    "media"
+)  # Yeh setting batati hai ki uploaded media files "media" directory mein store hongi.
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'  # Yeh setting define karti hai default field type for primary key auto fields in Django models.
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"  # Yeh setting define karti hai default field type for primary key auto fields in Django models.
 
 LOGIN_REDIRECT_URL = "home"  # Yeh URL hai jahan user ko login ke baad redirect kiya jayega. (Is case mein home page.)
 
@@ -176,25 +173,25 @@ STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-SITE_ID = 1 
+SITE_ID = 1
 
 SOCIALACCOUNT_PROVIDERS = {
     "google": {
         "SCOPE": [
-            'profile',
-            'email',
+            "profile",
+            "email",
         ],
-        "AUTH_PARAMS":{
+        "AUTH_PARAMS": {
             "access_type": "online",
-        }
+        },
     },
 }
 
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'amitpathak00700@gmail.com'  # Your email host provider
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "amitpathak00700@gmail.com"  # Your email host provider
 EMAIL_PORT = 587  # Or 465 for SSL
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'amitpathak00700@gmail.com'
-EMAIL_HOST_PASSWORD = 'Amit2003@@'
-DEFAULT_FROM_EMAIL = 'amitpathak00700@gmail.com'
+EMAIL_HOST_USER = "amitpathak00700@gmail.com"
+EMAIL_HOST_PASSWORD = "Amit2003@@"
+DEFAULT_FROM_EMAIL = "amitpathak00700@gmail.com"

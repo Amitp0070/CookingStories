@@ -81,7 +81,7 @@ def my_articles(request):
     return render(request, "Cookingstories/my_articles.html", ctx)
 
 
-@login_required
+
 def inc_like(request, id):
     article = Article.objects.get(id=id)
     article.likes += 1

@@ -5,8 +5,14 @@
 
 {% block css %}
 <style>
+    /* Preventing overflow on body */
+    body {
+        overflow-x: hidden;
+    }
+
     .contact-section {
         background-color: #f8f9fa;
+        overflow: hidden;  /* Make sure content doesn't overflow */
     }
 
     .section-title {
@@ -22,7 +28,8 @@
     }
 
     .contact-section img {
-        max-width: 100%;
+        width: 100%;  /* Make sure image does not overflow */
+        max-width: 100%; /* Ensure responsive scaling */
         border-radius: 10px;
     }
 
@@ -51,12 +58,19 @@
     .footer-section form .btn-warning {
         background-color: #ffbc42;
         border: none;
-        padding: 1px 20px ;
+        padding: 1px 10px;
+        margin-bottom: 10px;
+        font-weight: bold;
     }
 
     .footer-section form .btn-warning:hover {
         background-color: #e0a931;
-        
+    }
+
+    /* Make sure rows and columns are properly contained */
+    .container, .row {
+        max-width: 100%;
+        overflow: hidden;
     }
 </style>
 {% endblock css %}
@@ -74,8 +88,8 @@
 
 
 
-<section class="contact-section py-5">
-    <div class="">
+<section class="contact-section py-2">
+    <div class="cont">
         {% if messages %}
         {% for message in messages %}
         <div class="alert alert-success" role="alert">

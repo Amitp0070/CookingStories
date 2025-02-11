@@ -148,11 +148,11 @@
 <div class="d-flex justify-content-center">
     <div class="article-card">
         <div class="author-header">
-            {% if item.author_image %}
+            <!-- {% if item.author_image %}
             <img src="{{ item.author_image.url }}" alt="{{ item.author.username }}">
-            {% endif %}
+            {% endif %} -->
             <div class="author-info">
-                <span class="fs-3 fw-bold">{{ item.author.username }}</span>
+                <span class="fs-3 fw-bold">{{ item.author.username|capfirst }}</span>
                 <p class="card-text">
                     <small class="text-muted">Published on: {{ item.created_at|date:"F j, Y" }}</small>
                 </p>
@@ -177,7 +177,7 @@
                     </a>
                     {% endif %}
                 </div>
-                <small class="text-muted fs-6">
+                <small class="text-muted fs-6 text-center">
                     {{ item.created_at|date:"F j, Y" }}
                 </small>
             </div>

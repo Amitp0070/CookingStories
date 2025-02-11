@@ -92,6 +92,7 @@
                 <p class="intro-text">We'd love to hear from you! Whether you have a question about recipes,
                     content, or anything else, our team is ready to answer all your questions.</p>
                 <form  method="POST">
+                    {% csrf_token %}
                     <div class="mb-3">
                         <label for="name" class="form-label">Name</label>
                         <input type="text" class="form-control" id="name" name="name" required>
@@ -129,4 +130,6 @@
     </div>
 </footer>
 </section>
+
+{% include 'components/footer.html' %}
 {% endblock content %}

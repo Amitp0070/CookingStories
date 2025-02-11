@@ -27,7 +27,7 @@
             <div class="info d-flex justify-content-between pt-5">
                 <span>
                     <i class="bi bi-person"></i>
-                    {{article.author}}
+                    {{article.author|capfirst}}
                 </span>
                 <span>
                     <i class="bi bi-tag"></i>
@@ -50,6 +50,8 @@
         </div>
     </div>
 </div>
+
+{% include 'components/footer.html' %}
 {% endblock %}
 
 
